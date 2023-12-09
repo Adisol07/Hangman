@@ -210,7 +210,7 @@ void config()
 	system("clear");
 	printf(WHITE);
 	printf("Configuration: \n");
-	printf(" -> Type: 'set $words$' to set your own words(separate words by spaces)\n");
+	printf(" -> Type: 'set $words$' to set your own words(separate words by comma and use regular spaces for spaced words)\n");
 	printf(" : ");
 	printf(GRAY);
 	char* input = (char*)malloc(50);
@@ -225,12 +225,12 @@ void config()
 		words = NULL;
 		wordCount = 0;
 
-		word = strtok(NULL, " ");
+		word = strtok(NULL, ",");
 		while (word != NULL) {
 			words = (char**)realloc(words, (wordCount + 1) * sizeof(char*));
 			words[wordCount] = strdup(word);
 			wordCount++;
-			word = strtok(NULL, " ");
+			word = strtok(NULL, ",");
 		}
 	}
 
