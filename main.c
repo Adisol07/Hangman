@@ -186,7 +186,6 @@ void Generate()
 	attempts = 10;
 	currentWordIndex = rand() % wordCount;
 	currentWord = words[currentWordIndex];
-	//char guessedLetters[strlen(currentWord)];
 	guessedLetters = (char*)malloc(strlen(currentWord));
 	wrongGuesses = (char*)malloc(0);
 	guessed = 0;
@@ -213,8 +212,8 @@ void config()
 	printf(" -> Type: 'set $words$' to set your own words(separate words by comma and use regular spaces for spaced words)\n");
 	printf(" : ");
 	printf(GRAY);
-	char* input = (char*)malloc(50);
-	scanf(" %50[^\n]", input);
+	char* input = (char*)malloc(200);
+	scanf(" %199[^\n]", input);
 
 	char* word = strtok(input, " ");
 	if (strcmp(word, "set") == 0) {
@@ -248,7 +247,7 @@ void information()
 	printf(" : ");
 	printf(GRAY);
 	char* input = (char*)malloc(10);
-	scanf(" %10[0-9a-zA-Z]", input);
+	scanf(" %9[0-9a-zA-Z]", input);
 	if (strcmp(input, "return") == 0) {
 		free(input);
 		return;
@@ -260,6 +259,17 @@ void information()
 		return;
 	}
 	information();
+}
+
+void replaceChar(char* str, char find, char replace)
+{
+	for (int i = 0; i < strlen(str); i++)
+	{
+		if (str[i] == find)
+		{
+			str[i] = replace;
+		}
+	}
 }
 
 int main()
@@ -274,7 +284,8 @@ again:
 		printf("\nType letter or whole word: ");
 		printf(GRAY);
 		char* input = (char*)malloc(100);
-		scanf(" %100[0-9a-zA-Zá-ťě-Ž-_? ]", input);
+		scanf(" %99[0-9a-zA-Z-_? ]", input);
+		//replaceChar(input, '_', ' ');
 		if (strcmp(input, "?") == 0) {
 			information();
 		}
