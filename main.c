@@ -47,7 +47,7 @@ void AllocateWords()
 					"tristadvacetsest", "dvestesedesatjedna", "jedna", "c1", "csharp", "c", "cpp", "havel",
 					"mikulas", "databaze", "server", "zvire", "sibenice", "morava", "slovensko", "nemecko",
 					"polsko", "rakousko", "php", "hangman", "cool", "trdlo", "slanina", "les", "simpsonovi", "korunka",
-					"notebook", "ruka", "klavesnice", "matematika", "kabat" };
+					"notebook", "ruka", "klavesnice", "matematika", "kabat", "klobouk", "kostka", "kostky" };
 
 	words = (char**)realloc(words, ARRAY_SIZE(w) * sizeof(char*));
 	wordCount = ARRAY_SIZE(w);
@@ -183,7 +183,6 @@ void Generate()
 	srand(time(NULL));
 	renderMessageType = -1;
 	renderMessage = "";
-	attempts = 10;
 	currentWordIndex = rand() % wordCount;
 	currentWord = words[currentWordIndex];
 	guessedLetters = (char*)malloc(strlen(currentWord));
@@ -210,6 +209,7 @@ void config()
 	printf(WHITE);
 	printf("Configuration: \n");
 	printf(" -> Type: 'set $words$' to set your own words(separate words by comma and use regular spaces for spaced words)\n");
+	printf(" -> Type: 'attempts $num_of_attempts$' to set custom amount of attempts\n");
 	printf(" : ");
 	printf(GRAY);
 	char* input = (char*)malloc(200);
@@ -231,6 +231,10 @@ void config()
 			wordCount++;
 			word = strtok(NULL, ",");
 		}
+	}
+	else if (strcmp(word, "attempts") == 0) {
+		char *token = strtok(NULL, " ");
+		attempts = atoi(token);
 	}
 
 	free(input);
@@ -276,6 +280,7 @@ int main()
 {
 	AllocateWords();
 again:
+	attempts = 10;
 	Generate();
 	do
 	{
