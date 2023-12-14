@@ -47,7 +47,12 @@ void AllocateWords()
 					"tristadvacetsest", "dvestesedesatjedna", "jedna", "c1", "csharp", "c", "cpp", "havel",
 					"mikulas", "databaze", "server", "zvire", "sibenice", "morava", "slovensko", "nemecko",
 					"polsko", "rakousko", "php", "hangman", "cool", "trdlo", "slanina", "les", "simpsonovi", "korunka",
-					"notebook", "ruka", "klavesnice", "matematika", "kabat", "klobouk", "kostka", "kostky" };
+					"notebook", "ruka", "klavesnice", "matematika", "kabat", "klobouk", "kostka", "kostky",
+					"vaza", "zaluzie", "cinka", "knoflik", "nitka", "fotosynteza", "okap",
+					"podnikatel", "majoneza", "ctverecek", "balon", "dira", "zirafa",
+					"zlomenina", "orteza", "dluhy", "dluh", "platebni karta", "stekot",
+					"priklad", "flaska", "plisen", "knirek", "strom", "praxe", "cas",
+					"pocitac", "mys", "kabel", "kastan", "niva", "hermelin", "cislo" };
 
 	words = (char**)realloc(words, ARRAY_SIZE(w) * sizeof(char*));
 	wordCount = ARRAY_SIZE(w);
