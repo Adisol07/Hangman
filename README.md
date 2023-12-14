@@ -14,4 +14,4 @@ Pokud už jste v nápovědě tak můžete napsat: '_config_', aby Vás to přesm
 Příklad příkazu: '_set hello world_' - seznam možných slov: '_hello_', '_world_'<br>
 
 ## Spuštění
-V '_[Releases](https://github.com/Adisol07/Hangman/releases)_' lze najít seznam všech verzí, stačí stáhnout spustitelný soubor pro daný operační systém.(Zatím pouze MacOS)<br>
+V '_[Releases](https://github.com/Adisol07/Hangman/releases)_'(aktuálně tam není nejnovější verze) lze najít seznam všech verzí, stačí stáhnout spustitelný soubor pro daný operační systém.(Zatím pouze MacOS)<br>
