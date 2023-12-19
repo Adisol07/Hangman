@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -86,6 +85,13 @@ void SetCursorPosition(int x, int y)
     printf("\033[%d;%dH", y + 1, x + 1);
     fflush(stdout);
 }
+void ClearConsole() {
+#ifdef _WIN32
+	system("cls");
+#else
+	system("clear");
+#endif
+}
 
 void PrintFetchedWord(char guessedLetters[])
 {
@@ -106,9 +112,9 @@ void PrintFetchedWord(char guessedLetters[])
 
 void Render(char guessedLetters[])
 {
-	system("clear");
+	ClearConsole();
 	SetCursorPosition(0,0);
-	system("clear");
+	ClearConsole();
 	printf(MAGENTA);
 	printf("<- HANGMAN -> ");
 	printf(GRAY);
@@ -210,7 +216,7 @@ int getNumberOfLetters(char letter)
 
 void config()
 {
-	system("clear");
+	ClearConsole();
 	printf(WHITE);
 	printf("Configuration: \n");
 	printf(" -> Type: 'set $words$' to set your own words(separate words by comma and use regular spaces for spaced words)\n");
@@ -246,7 +252,7 @@ void config()
 }
 void information()
 {
-	system("clear");
+	ClearConsole();
 	printf(WHITE);
 	printf("Information:\n");
 	printf(" -> Character '?' gets you here\n");
@@ -293,8 +299,8 @@ again:
 		printf(MAGENTA);
 		printf("\nType letter or whole word: ");
 		printf(GRAY);
-		char* input = (char*)malloc(100);
-		scanf(" %99[0-9a-zA-Z-_? ]", input);
+		char* input = (char*)malloc(200);
+		scanf(" %199[0-9a-zA-Z-_? ]", input);
 		//replaceChar(input, '_', ' ');
 		if (strcmp(input, "?") == 0) {
 			information();
